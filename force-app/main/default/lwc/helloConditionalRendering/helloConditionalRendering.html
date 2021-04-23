@@ -1,0 +1,27 @@
+<template>
+<lightning-card  title="Conditional Rendering">
+    <div class="slds-m-around_small">
+    <lightning-button variant="brand" label="Show Data" 
+    title="Show Data" onclick={handleClick} 
+    class="slds-m-left_x-small">
+    </lightning-button>
+    <template if:true={isVisible}>
+         <div>Welcome to my Channel, Shovan!</div>
+    </template>
+    <template if:false={isVisible}>
+        <div>To view the data, please click the button above!!!</div>
+    </template>
+
+    <div>
+        <lightning-input type="password" 
+            label="Enter your password to get the OTP" 
+            name="input1" onkeyup={changeHandler}>
+        </lightning-input>
+    </div>
+    <template if:true={otpGenerate}>
+        <div>Your OTP is {otpGenerate}</div>
+    </template>
+
+</div>
+</lightning-card>
+</template>

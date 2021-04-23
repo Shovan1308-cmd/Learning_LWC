@@ -1,0 +1,59 @@
+<template>
+    <lightning-card title="for:each loop">
+        <div class="slds-m-around_small">
+            <template for:each={trainList} for:item="trains">
+                <ul key={train} class="slds-has-dividers_around-space">
+                    <li class="slds-item">{trains}</li>    
+                  </ul>
+            </template>
+        </div>
+    </lightning-card>
+    <lightning-card title="for:each loop with array of objects">
+        <div class="slds-m-around_small">
+            <template for:each={airlineList} for:item="list">
+    <!--            <ul key={train} class="slds-has-dividers_around-space">
+                    <li class="slds-item">{trains}</li></br>    
+                  </ul> -->
+                  <table key={list.id} style="border: 1px;">
+                    <tr style="border: 1px solid black;">
+                        <th>Flight Number</th>
+                        <th>Flight Name</th>
+                        <th>Flight Source</th>
+                        <th>Flight Destination</th>
+                    </tr>
+                    <tr style="border: 1px solid black;">
+                        <td style="border: 1px solid black;">{list.id}</td>
+                        <td style="border: 1px solid black;">{list.name}</td>
+                        <td style="border: 1px solid black;">{list.source}</td>
+                        <td style="border: 1px solid black;">{list.destination}</td>
+                    </tr>
+                  </table>
+            </template>
+        </div>
+    </lightning-card>
+    <lightning-card title="iterator loop">
+        <div class="slds-m-around_small">
+            <template iterator:flights={airlineList}>
+                <div key={flights.value.id}>
+                <ul class="slds-has-dividers_around-space">
+                    <template if:true={flights.first}>
+                        <div class="slds-box slds-theme_shade">
+                          <strong><i>Flights Delayed Today</i></strong>
+                        </div>
+                    </template>
+                    <li class="slds-item">
+                        <strong>Flight Number - {flights.value.id} - {flights.value.name} from 
+                            {flights.value.source} to {flights.value.destination}
+                        </strong>
+                    </li>
+                    <template if:true={flights.last}>
+                        <div class="slds-box slds-theme_shade">
+                        <strong><i>Sorry for the Inconvenience Caused!!</i></strong>
+                        </div>
+                    </template>    
+                  </ul>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
